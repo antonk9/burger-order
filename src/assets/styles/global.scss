@@ -1,0 +1,37 @@
+html,
+body {
+    font-family: $font-main;
+}
+
+h1,
+h2,
+h3 
+{
+    margin: 0;
+}
+
+h1 {
+    line-height: 45px;
+}
+
+h2 {
+    line-height: 35px;
+}
+
+h3 {
+    line-height: 25px;
+}
+
+p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+input {
+    font-family: $font-main;
+}
+
+a {
+    text-decoration: none;
+}

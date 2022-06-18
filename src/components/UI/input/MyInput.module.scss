@@ -1,0 +1,42 @@
+@import '../../../assets/styles/variables.scss';
+
+input {
+    border: 1px solid $color-light-gray;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 13px;
+
+    &:not(:placeholder-shown) {
+        & + i {
+            display: none;
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &::placeholder {
+        font-family: $font-main;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+.input {
+    &__control {
+        position: relative;
+    
+        i {
+            position: absolute;
+            top: 12px;
+            left: 15px;
+        }
+    }
+
+    &__icon {
+        &::placeholder {
+            padding-left: 25px;
+        }
+    }
+}

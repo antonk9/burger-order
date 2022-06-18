@@ -1,0 +1,14 @@
+@import './variables.scss';
+@import './pages.scss';
+@import './fonts.scss';
+@import './global.scss';
+
+.app-frames {
+    margin: 10px auto;
+    max-width: 380px;
+    border-radius: 20px;
+    box-shadow: $box-shadow;
+    box-sizing: border-box;
+    height: calc(100vh - 20px);
+    padding: 15px;
+}

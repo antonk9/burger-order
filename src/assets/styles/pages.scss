@@ -1,0 +1,9 @@
+.page {
+    &-home {
+       .intro {
+           line-height: 24px;
+           color: $color-gray;
+           font-weight: 600;
+       }
+    }
+}

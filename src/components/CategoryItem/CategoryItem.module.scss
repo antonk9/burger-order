@@ -1,0 +1,29 @@
+@import "../../assets/styles/variables.scss";
+
+.category__item {
+    box-shadow: $box-shadow;
+    padding: 19px 22px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 176px;
+    box-sizing: border-box;
+
+    p {
+        color: #000;
+    }
+
+    &.active {
+        background-color: $color-red;
+
+        p {
+            color: #FFF;
+        }
+        
+        svg {
+            fill: #FFF;
+        }
+    }
+}
