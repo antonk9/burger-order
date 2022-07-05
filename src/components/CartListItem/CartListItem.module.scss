@@ -1,0 +1,47 @@
+@import '../../assets/styles/variables.scss';
+
+.list_item {
+    display: flex;
+    box-shadow: $box-shadow-5;
+    padding: 28px 16px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.list_item_right {
+    width: 100%;
+}
+
+.list_item_top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.list_item_name {
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 120px;
+    font-size: 17px;
+}
+
+.list_item_remove {
+    fill: $color-red;
+    cursor: pointer;
+}
+
+.list_item_bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list_item__image {
+    margin-right: 32px;
+
+    img {
+        height: auto;
+        width: 80px;
+    }
+}

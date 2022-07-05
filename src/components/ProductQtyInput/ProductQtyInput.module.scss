@@ -1,0 +1,25 @@
+@import '../../assets/styles/variables.scss';
+
+.product_input_qty {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.qty_changer {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-red-1;
+    border-radius: 40px;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -2,4 +2,14 @@
     display: flex;
     align-items: center;
     margin: 23px 0;
+    justify-content: space-between;
+}
+
+.more_attributes {
+    stroke: #000;
+}
+
+.page_title {
+    font-weight: 500;
+    font-size: 18px;
 }

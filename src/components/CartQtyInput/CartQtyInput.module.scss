@@ -1,0 +1,22 @@
+@import '../../assets/styles/variables.scss';
+
+.cart_input_qty {
+    border: 1px solid $color-light-gray;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+    align-items: center;
+}
+
+.qty_changer {
+    color: $color-red;
+    padding: 0 8px;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+
+    &_minus {
+        height: 28px;
+    }
+}

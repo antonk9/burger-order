@@ -19,7 +19,9 @@ h2 {
 }
 
 h3 {
-    line-height: 25px;
+    line-height: 27px;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 p {
@@ -28,10 +30,34 @@ p {
     line-height: 21px;
 }
 
-input {
+input,
+button  {
     font-family: $font-main;
 }
 
 a {
     text-decoration: none;
+}
+
+.icon_favorites {
+    svg {
+        stroke: $color-gray !important;
+        fill: #fff !important;
+    }
+
+    &.active {
+        svg {
+            stroke: $color-red !important;
+        }
+    }
+}
+
+.add-to-favorites {
+    fill: #fff;
+    stroke: $color-red;
+
+    &.active {
+        fill: $color-red;
+        stroke: $color-red;
+    }
 }

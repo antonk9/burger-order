@@ -19,7 +19,13 @@ const CategoriesBar = () => {
     }
     return (
         <div className={classes.categories__bar}>
-            {categoryItems.map(item => <CategoryItem {...item} changeCategory={changeCategory} key={item.id} activeCategory={activeCategory} />)}
+            {categoryItems.map(item => 
+                <CategoryItem
+                    {...item} 
+                    changeCategory={changeCategory} 
+                    key={item.id} 
+                    activeCategory={activeCategory} />)
+                    }
         </div>
     );
 };

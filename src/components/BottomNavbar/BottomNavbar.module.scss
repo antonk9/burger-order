@@ -1,0 +1,41 @@
+@import '../../assets/styles/variables.scss';
+
+.bottom_navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: $box-shadow-2;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 9;
+    bottom: 10px;
+    background-color: #FFF;
+    width: 375px;
+    margin-left: -15px;
+    padding: 11px 22px;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    svg {
+        fill: $color-gray;
+        width: 16px;
+    }
+
+    p {
+        color: $color-gray;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+    }
+    
+    .active {
+        svg {
+            fill: $color-red;
+        }
+
+        p {
+            color: $color-red;
+        }
+    }
+}
