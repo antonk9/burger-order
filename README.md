@@ -1,10 +1,7 @@
 ## Configuration file
 
-Set the server host in config.json
+Set the server host in config.json. Without the linked backend application won't work.
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

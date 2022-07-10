@@ -3,6 +3,7 @@ import CartQtyInput from "../CartQtyInput/CartQtyInput";
 import classes from './CartListItem.module.scss'
 import { CartContext, ConfigContext } from "../../context";
 import { ReactComponent as Close } from '../../assets/images/close.svg';
+import configData from '../../config.json';
 
 const CartListItem = ({product, quantity}) => {
     const { cartProducts, setCartProducts } = useContext(CartContext);
@@ -35,7 +36,7 @@ const CartListItem = ({product, quantity}) => {
     return (
         <div className={classes.list_item}>
             <div className={classes.list_item__image}>
-                <img src={product.image} alt={product.name} />
+                { product.image ? <img src={`${configData.SERVER_URL}${product?.image}`} alt={product.name} /> : '' }
             </div>
             <div className={classes.list_item_right}>
                 <div className={classes.list_item_top}>

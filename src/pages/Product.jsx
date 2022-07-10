@@ -1,61 +1,32 @@
-import React, { useContext, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import TopNavbar from "../components/TopNavbar/TopNavbar";
-import burger1 from "../assets/images/item-burger1.png";
-import burger2 from "../assets/images/item-burger2.png";
 import IconBox from "../components/IconBox/IconBox";
 import ProductQtyInput from "../components/ProductQtyInput/ProductQtyInput";
 import ProductAddToCart from "../components/ProductAddToCart/ProductAddToCart";
 import { ReactComponent as Cart } from "../assets/images/cart.svg";
 import { CartContext } from "../context";
+import ProductsService from '../API/ProductsService';
+import configData from '../config.json';
 
 const Product = () => {
-    const params = useParams();
+    const location = useLocation();
+    const { productId } = location.state;
     // eslint-disable-next-line
     const { cartProducts, setCartProducts } = useContext(CartContext)
+    const [product, setProduct] = useState([])
 
-    const items = [
-        {
-            id: 1,
-            name: 'Chipotle Cheesy Chicken',
-            price: '12.60',
-            image: burger1,
-            url: '/product/1',
-            description: {
-                short: 'Chicken burger',
-                full: 'A signature flame-grilled chicken patty topped with smoked beef'
-            },
-            attributes: [
-                {
-                    id: '123',
-                    title: 'size',
-                    variants: ['S', 'M', 'L']
-                }
-            ],
-            availability: 10
-        },
-        {
-            id: 2,
-            name: 'Beef burger',
-            price: '20.95',
-            image: burger2,
-            url: '/product/2',
-            description: {
-                short: 'Beef burger',
-                full: 'A signature flame-grilled chicken patty topped with smoked beef'
-            },
-            attributes: [
-                {
-                    id: '123',
-                    title: 'size',
-                    variants: ['S', 'M', 'L']
-                }
-            ],
-            availability: 10
-        }
-    ]
+    useEffect(() => {
+        (async function () {
+            const { data } = await ProductsService.getProductById(productId)
+
+            setProduct(data)
+        }())
+    }, [productId])
+
+   
     // eslint-disable-next-line
-    const product = items.find(item => item.id == params.id)
+    // const product = items.find(item => item.id == params.id)
     const [selectedAttribute, setSelectedAttribute] = useState({})
     const [selectedQty, setSelectedQty] = useState(1)
 
@@ -76,7 +47,7 @@ const Product = () => {
     }
 
     const addToCart = () => {
-        const addedProduct = cartProducts.find(addedProduct => product.id === addedProduct.product.id)
+        const addedProduct = cartProducts.find(addedProduct => product._id === addedProduct.product._id)
 
         
         if(addedProduct) {
@@ -108,19 +79,18 @@ const Product = () => {
             <TopNavbar 
                 isBackButton={true} 
                 isFavoriteButton={true} />
-
             <div className="product-details">
                 <div className="product-header">
                     {product.name}
                 </div>
                 <div className="product-description">
-                    {product.description.full}
+                    {product?.description?.full}
                 </div>
                 <div className="product-image">
-                    <img src={product.image} alt={product.name} />
+                { product.image ? <img src={`${configData.SERVER_URL}${product?.image}`} alt={product.name} /> : '' }
                 </div>
-                {product.attributes.map(attribute => 
-                    <div className="attributes" key={attribute.id}>
+                {product?.attributes?.map(attribute => 
+                    <div className="attributes" key={attribute._id}>
                         {attribute.variants.map(variant => 
                             <IconBox 
                                 size="large" 
