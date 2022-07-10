@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import pizza from '../../assets/images/cat-pizza.png';
-import cake from '../../assets/images/cat-cake.png';
-import burger from '../../assets/images/cat-burger.png';
+import React, { useEffect, useState } from 'react';
 import CategoryItem from "../CategoryItem/CategoryItem";
-import classes from './CategoriesBar.module.scss'
+import classes from './CategoriesBar.module.scss';
+import CategoriesService from '../../API/CategoriesService';
 
 const CategoriesBar = () => {
-    const categoryItems = [
-        {id: 1, image: burger, name: 'Burgers', url: '#'},
-        {id: 2, image: pizza, name: 'Pizza', url: '#'},
-        {id: 3, image: cake, name: 'Cakes', url: '#'}
-    ]
+        const [categories, setCategories] = useState([])
+
+        useEffect(() => {
+            (async function () {
+                const { data } = await CategoriesService.getAllCategories()
+                setCategories(data)
+            }())
+        }, [])
 
     const [activeCategory, setActiveCategory] = useState(0)
     
@@ -19,11 +20,11 @@ const CategoriesBar = () => {
     }
     return (
         <div className={classes.categories__bar}>
-            {categoryItems.map(item => 
+            {categories.map(item => 
                 <CategoryItem
                     {...item} 
                     changeCategory={changeCategory} 
-                    key={item.id} 
+                    key={item._id} 
                     activeCategory={activeCategory} />)
                     }
         </div>
