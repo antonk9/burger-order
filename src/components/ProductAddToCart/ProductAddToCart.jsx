@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classes from './ProductAddToCart.module.scss';
-import { ReactComponent as Cart } from '../../assets/images/cart.svg';
+import { ReactComponent as Cart } from 'assets/images/cart.svg';
 
 const ProductAddToCart = ({clickEvent}) => {
     return (
@@ -11,4 +11,4 @@ const ProductAddToCart = ({clickEvent}) => {
     );
 };
 
-export default ProductAddToCart;
+export default memo(ProductAddToCart);

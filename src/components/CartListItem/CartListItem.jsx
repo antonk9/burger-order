@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import CartQtyInput from "../CartQtyInput/CartQtyInput";
+import CartQtyInput from "components/CartQtyInput/CartQtyInput";
 import classes from './CartListItem.module.scss'
-import { CartContext, ConfigContext } from "../../context";
-import { ReactComponent as Close } from '../../assets/images/close.svg';
-import configData from '../../config.json';
+import { CartContext, ConfigContext } from "context";
+import { ReactComponent as Close } from 'assets/images/close.svg';
+import configData from 'config.json';
 
 const CartListItem = ({product, quantity}) => {
     const { cartProducts, setCartProducts } = useContext(CartContext);

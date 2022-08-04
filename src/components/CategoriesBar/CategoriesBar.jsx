@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import CategoryItem from "../CategoryItem/CategoryItem";
+import CategoryItem from "components/CategoryItem/CategoryItem";
 import classes from './CategoriesBar.module.scss';
-import CategoriesService from '../../API/CategoriesService';
+import CategoriesService from 'API/CategoriesService';
 
 const CategoriesBar = () => {
         const [categories, setCategories] = useState([])
@@ -22,11 +22,11 @@ const CategoriesBar = () => {
         <div className={classes.categories__bar}>
             {categories.map(item => 
                 <CategoryItem
-                    {...item} 
-                    changeCategory={changeCategory} 
-                    key={item._id} 
-                    activeCategory={activeCategory} />)
-                    }
+                {...item} 
+                changeCategory={changeCategory} 
+                key={item._id} 
+                activeCategory={activeCategory} />)
+            }
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MyInput from "../input/MyInput";
+import MyInput from "components/UI/input/MyInput";
 import classes from './Searchbar.module.scss'
 
 const Searchbar = () => {

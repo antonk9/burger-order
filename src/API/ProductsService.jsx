@@ -1,5 +1,5 @@
 import axios from 'axios';
-import configData from "../config.json";
+import configData from "config.json";
 
 export default class ProductsService {
     static async getAllProducts() {

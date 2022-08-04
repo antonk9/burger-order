@@ -1,5 +1,5 @@
 import React from 'react';
-import CartListItem from "../CartListItem/CartListItem";
+import CartListItem from "components/CartListItem/CartListItem";
 import classes from './CartListItems.module.scss'
 
 const CartListItems = ({cartProducts}) => {

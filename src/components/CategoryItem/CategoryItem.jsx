@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classes from './CategoryItem.module.scss';
-import { ReactComponent as CircleArrow } from '../../assets/images/circle-arrow-right.svg';
-import configData from "../../config.json";
+import { ReactComponent as CircleArrow } from 'assets/images/circle-arrow-right.svg';
+import configData from "config.json";
 
-const CategoryItem = (props) => {
+const CategoryItem = memo((props) => {
     return (
         <a 
             href={props.href} 
@@ -16,6 +16,6 @@ const CategoryItem = (props) => {
             <CircleArrow />
         </a>
     );
-};
+});
 
 export default CategoryItem;

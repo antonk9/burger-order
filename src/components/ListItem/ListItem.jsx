@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import classes from './ListItem.module.scss'
-import { ConfigContext } from "../../context";
-import configData from '../../config.json';
+import { ConfigContext } from "context";
+import configData from 'config.json';
 
 const ListItem = (props) => {
     const { config } = useContext(ConfigContext);

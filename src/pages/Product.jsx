@@ -1,13 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import TopNavbar from "../components/TopNavbar/TopNavbar";
-import IconBox from "../components/IconBox/IconBox";
-import ProductQtyInput from "../components/ProductQtyInput/ProductQtyInput";
-import ProductAddToCart from "../components/ProductAddToCart/ProductAddToCart";
-import { ReactComponent as Cart } from "../assets/images/cart.svg";
-import { CartContext } from "../context";
-import ProductsService from '../API/ProductsService';
-import configData from '../config.json';
+import React, { useContext, useState, useEffect, memo} from 'react';
+import { useLocation } from 'react-router-dom';
+import TopNavbar from "components/TopNavbar/TopNavbar";
+import IconBox from "components/IconBox/IconBox";
+import ProductQtyInput from "components/ProductQtyInput/ProductQtyInput";
+import ProductAddToCart from "components/ProductAddToCart/ProductAddToCart";
+import { CartContext } from "context";
+import ProductsService from 'API/ProductsService';
+import configData from 'config.json';
+import { useCallback } from "react";
+import ProductGoToCart from "components/ProductGoToCart/ProductGoToCart";
 
 const Product = () => {
     const location = useLocation();
@@ -15,6 +16,10 @@ const Product = () => {
     // eslint-disable-next-line
     const { cartProducts, setCartProducts } = useContext(CartContext)
     const [product, setProduct] = useState([])
+    // eslint-disable-next-line
+    // const product = items.find(item => item.id == params.id)
+    const [selectedAttribute, setSelectedAttribute] = useState({})
+    const [selectedQty, setSelectedQty] = useState(1)
 
     useEffect(() => {
         (async function () {
@@ -24,17 +29,15 @@ const Product = () => {
         }())
     }, [productId])
 
-   
-    // eslint-disable-next-line
-    // const product = items.find(item => item.id == params.id)
-    const [selectedAttribute, setSelectedAttribute] = useState({})
-    const [selectedQty, setSelectedQty] = useState(1)
 
-    const setProductAttribute = (attr, variant) => {
+    const setProductAttribute = useCallback((attr, variant) => {
         setSelectedAttribute({[attr.title]: variant})
-    }
+    }, [])
+    const MemoizedProductQtyInput = memo(ProductQtyInput)
+    const MemoizedProductAddToCart = memo(ProductAddToCart)
+    const MemoizedIconBox = memo(IconBox)
 
-    const doSelectQty = isIncreased => {
+    const doSelectQty = useCallback(isIncreased => {
         if (isIncreased) {
             if (selectedQty < product.availability) {
                 setSelectedQty(selectedQty + 1)
@@ -44,12 +47,11 @@ const Product = () => {
                 setSelectedQty(selectedQty - 1)
             }
         }
-    }
+    }, [selectedQty, product])
 
-    const addToCart = () => {
+    const addToCart = useCallback(() => {
         const addedProduct = cartProducts.find(addedProduct => product._id === addedProduct.product._id)
 
-        
         if(addedProduct) {
             const productsToAdd = [...cartProducts].map(addedProduct => {
                 if(addedProduct.product.id === product.id) {
@@ -72,7 +74,7 @@ const Product = () => {
                 ],
             )
         }
-    }
+    }, [cartProducts, product, selectedQty, selectedAttribute, setCartProducts])
 
     return (
         <div className="page-product">
@@ -92,24 +94,21 @@ const Product = () => {
                 {product?.attributes?.map(attribute => 
                     <div className="attributes" key={attribute._id}>
                         {attribute.variants.map(variant => 
-                            <IconBox 
+                            <MemoizedIconBox 
                                 size="large" 
                                 clickEvent={() => setProductAttribute(attribute, variant)} 
                                 key={variant}
                                 // eslint-disable-next-line
                                 parentClasses={selectedAttribute[attribute.title] == variant ? 'icon-box-selected' : ''}>
                                     {variant}
-                            </IconBox> 
+                            </MemoizedIconBox> 
                         )}
                     </div>
                 )}
-                <ProductQtyInput productQty={selectedQty} clickEvent={doSelectQty} />
+                <MemoizedProductQtyInput productQty={selectedQty} clickEvent={doSelectQty} />
                 <div className="product-cart-actions">
-                    <ProductAddToCart clickEvent={addToCart} />
-                    <Link to="/cart" className="product-to-cart">
-                        <Cart fill="#C8161D" stroke="#FFF" />
-                        <span>Go to Cart</span>
-                    </Link>
+                    <MemoizedProductAddToCart clickEvent={addToCart} />
+                    <ProductGoToCart />
                 </div>
             </div>
         </div>

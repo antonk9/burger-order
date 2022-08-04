@@ -97,4 +97,13 @@
             margin-top: 70px;
         }
     }
+
+    &-login,
+    &-registration {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+    }
 }

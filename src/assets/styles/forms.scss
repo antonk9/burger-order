@@ -1,0 +1,37 @@
+.form-normal {
+    padding: 0 20px;
+    width: 100%;
+
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    .form {
+        &-control {
+            margin-top: 10px;
+    
+            .input-text {
+                border-radius: 5px;
+                border: 1px solid $color-gray;
+                color: $color-black;
+    
+                &.is-invalid {
+                    border-color: $color-red-1;
+                }
+            }
+    
+            .message-invalid {
+                font-size: 12px;
+                color: $color-red-1;
+            }
+        }
+
+        &-errors {
+            color: $color-red-1;
+        }
+    }
+
+    button[type="submit"] {
+        margin-top: 10px;
+    }
+}

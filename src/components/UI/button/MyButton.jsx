@@ -1,11 +1,16 @@
 import React from 'react';
 import classes from './MyButton.module.scss'
+import classNames from 'classnames';
 
-const MyButton = ({children, theme, isDisabled}) => {
+const MyButton = ({children, theme, isDisabled, type}) => {
     return (
         <button 
-            type="button" 
-            className={classes.button + (` ${theme === 'dark' ? classes.dark : classes.red}`)}
+            className={classNames(
+                classes.button,
+                theme === 'dark' && classes.dark,
+                theme === 'red' && classes.red
+                )}
+            type={type}
             disabled={isDisabled}> 
             {children}
         </button>

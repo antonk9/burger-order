@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import classes from './ListItems.module.scss';
-import ListItem from "../ListItem/ListItem";
-import ProductsService from '../../API/ProductsService';
+import ListItem from "components/ListItem/ListItem";
+import ProductsService from 'API/ProductsService';
 
 const ListItems = ({title, link}) => {
     const [products, setProducts] = useState([])

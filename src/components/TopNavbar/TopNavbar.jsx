@@ -1,10 +1,10 @@
-import React from 'react';
-import { ReactComponent as MenuRight } from '../../assets/images/menu-right.svg';
+import React, { memo } from 'react';
+import { ReactComponent as MenuRight } from 'assets/images/menu-right.svg';
 import classes from './TopNavbar.module.scss';
-import IconBox from "../IconBox/IconBox";
-import { ReactComponent as ArrowLeft} from '../../assets/images/arrow-left.svg';
-import { ReactComponent as Heart} from '../../assets/images/heart.svg';
-import { ReactComponent as Dots } from '../../assets/images/v-dots.svg';
+import IconBox from "components/IconBox/IconBox";
+import { ReactComponent as ArrowLeft} from 'assets/images/arrow-left.svg';
+import { ReactComponent as Heart} from 'assets/images/heart.svg';
+import { ReactComponent as Dots } from 'assets/images/v-dots.svg';
 import { useNavigate } from 'react-router-dom';
 
 const TopNavbar = (props) => {
@@ -38,4 +38,4 @@ const TopNavbar = (props) => {
     );
 };
 
-export default TopNavbar;
+export default memo(TopNavbar);

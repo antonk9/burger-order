@@ -1,8 +1,8 @@
 import React from 'react';
-import { ReactComponent as Home } from '../../assets/images/home.svg';
-import { ReactComponent as Heart } from '../../assets/images/heart.svg';
-import { ReactComponent as User } from '../../assets/images/user.svg';
-import { ReactComponent as Dots } from '../../assets/images/h-dots.svg';
+import { ReactComponent as Home } from 'assets/images/home.svg';
+import { ReactComponent as Heart } from 'assets/images/heart.svg';
+import { ReactComponent as User } from 'assets/images/user.svg';
+import { ReactComponent as Dots } from 'assets/images/h-dots.svg';
 import { Link, useLocation } from "react-router-dom";
 import classes from './BottomNavbar.module.scss';
 
