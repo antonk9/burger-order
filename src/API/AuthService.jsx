@@ -27,6 +27,6 @@ export default class AuthService {
     }
 
     static getUserRole() {
-        return this.getCurrentUser().roles
+        return this.getCurrentUser()?.roles
     }
 }
